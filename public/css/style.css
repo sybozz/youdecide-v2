@@ -1,0 +1,22 @@
+.item-list .profile-pic {
+    width: 100px;
+    height: 100px;
+}
+.item-list .item-content {
+    padding-left: 150px;
+}
+.item-list .item-content h3 {
+    margin-top: 0;
+}
+.item-list .item-content .item-content-meta {
+    margin-top: 30px;
+}
+
+
+
+/* Li cards */
+.li-card {
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+}
