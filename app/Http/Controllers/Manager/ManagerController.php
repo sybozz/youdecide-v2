@@ -36,6 +36,7 @@ class ManagerController extends Controller
     return redirect()->back()->with('status', 'Profile updated.');
   }
 
+  
 
 
 

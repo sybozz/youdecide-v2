@@ -25,6 +25,14 @@ class ProposalController extends Controller
 
     return view('manager.pendingProposals', ['proposals'=>$proposals]);
   }
+  // blocked proposals
+  public function blockedProposals()
+  {
+    $proposals = DB::table('proposals')
+                            ->where('status', 2)
+                            ->get();
+    return view('manager.blockedProposals', ['proposals'=>$proposals]);
+  }
 
 
   //
@@ -83,7 +91,7 @@ class ProposalController extends Controller
   protected function disapproveProposalById($pid)
   {
     return DB::table('proposals')
-                      ->where('id', $id)
+                      ->where('id', $pid)
                       ->update([ 'status' => 2, 'approved_by' => Auth::id() ]);
   }
   // Disapprove proposal

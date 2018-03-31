@@ -61,15 +61,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/pending-proposals') }}">
+                    <a href="{{ url('proposals/pending') }}">
                         <i class="pe-7s-note2"></i>
                         <p>Pending proposals</p>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/trending-debates') }}">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Trending debates</p>
+                    <a href="{{ url('proposals/blocked') }}">
+                        <i class="pe-7s-attention"></i>
+                        <p>Blocked proposals</p>
                     </a>
                 </li>
                 <li>
