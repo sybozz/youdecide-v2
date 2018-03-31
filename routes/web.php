@@ -78,7 +78,7 @@ Route::post('manager/profile/update', 'Manager\ManagerController@updateProfile')
 
 
 
-
+// 
 /*
 * Admin Auth routes
 */
