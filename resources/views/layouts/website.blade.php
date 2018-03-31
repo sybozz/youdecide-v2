@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('public/website/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/website/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/website/css/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -30,14 +31,17 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name') }}
+                    <strong>{{ config('app.name') }}</strong>
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    &nbsp;
+                    <li><a href="{{ url('proposals/recent') }}">Home</a></li>
+                    @if(!Auth::guest())
+                    <li><a href="{{ url('create-proposal') }}">Create</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -86,7 +90,8 @@
 
       <h2 class="page-header text-center">@yield('pageHeader')</h2>
 
-      @yield('content')
+      @section('content')
+      @show
 
     </div>
 

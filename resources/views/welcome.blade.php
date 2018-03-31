@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('recent-proposals') }}">Website</a>
+                    <a href="{{ url('proposals/recent') }}">Website</a>
                     <a href="{{ url('manager-login') }}">Manager</a>
                     <a href="#">About</a>
                     <a href="#">Documentation</a>

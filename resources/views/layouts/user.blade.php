@@ -30,14 +30,16 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name') }}
+                    <strong>{{ config('app.name') }}</strong>
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    &nbsp;
+                  <li><a href="{{ url('/') }}">Home</a></li>
+                  <li><a href="{{ url('/recent-proposals') }}">Proposals</a></li>
+                  <li><a href="{{ url('create-proposal') }}">Create</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

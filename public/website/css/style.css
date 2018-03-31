@@ -1,3 +1,7 @@
 .item-content h3 > a {
 	color: #000000;
 }
+
+.item-list .item-card .panel-body {
+	box-shadow: 0px 0px 10px #ddd;
+}

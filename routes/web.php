@@ -23,7 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
  *
  * Website routes
  * */
-Route::get('/recent-proposals', 'WebsiteController@index');
+Route::get('proposals/recent', 'WebsiteController@index');
+Route::get('proposals/no-vote', 'WebsiteController@novoteProposals');
 
 
 

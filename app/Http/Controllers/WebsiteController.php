@@ -23,11 +23,19 @@ class WebsiteController extends Controller
       return view('website.recentProposals', ['proposals'=>$proposals]);
     }
 
-    public function createProposals()
-    {
-        return view('website.postProposal');
-    }
+    // public function createProposals()
+    // {
+    //     return view('website.postProposal');
+    // }
 
+
+
+    // Show no vote proposalsPending
+    public function novoteProposals()
+    {
+      $proposals = DB::table('proposals')->where('votes', 0)->orderBy('id', 'DESC')->get();
+      return view('website.proposalNoVotes', ['proposals'=>$proposals]);
+    }
 
 
 }
