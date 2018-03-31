@@ -39,6 +39,7 @@ class UserController extends Controller
                                         ->where('created_by', $currentUser->id)
                                         ->where('status', 0)
                                         ->get();
+      // dd($proposals);
       return view('user.proposalsPending', ['proposals'=>$proposals]);
     }
 

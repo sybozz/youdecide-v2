@@ -34,7 +34,31 @@ class ProposalController extends Controller
                                 ->select('proposals.*', 'users.name')
                                 ->where('proposals.id', $id)
                                 ->first();
-    return view('manager.proposalDetail', ['proposal'=>$proposal]);
+    return view('manager.showProposal', ['proposal'=>$proposal]);
+  }
+
+
+  // Edit profile by idea
+  public function editProposal( $id )
+  {
+    $proposal = DB::table('proposals')
+                                ->join('users', 'proposals.created_by', '=', 'users.id')
+                                ->select('proposals.*', 'users.name')
+                                ->where('proposals.id', $id)
+                                ->first();
+    return view('manager.proposalEdit', ['proposal'=>$proposal]);
+  }
+
+  // update profile by idea
+  public function updateProposal( Request $request, $id )
+  {
+    $proposal = DB::table('proposals')
+                                ->where('id', $id)
+                                ->update([
+                                  'title'         => $request->input('title'),
+                                  'description'   => $request->input('description'),
+                                ]);
+    return redirect()->back()->with('status', 'Proposal updated successfully!');
   }
 
 

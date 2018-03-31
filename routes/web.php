@@ -67,7 +67,9 @@ Route::get('/manager/home', 'Manager\ManagerController@index');
 Route::get('/manager/profile', 'Manager\ManagerController@index');
 
 Route::get('pending-proposals', 'Manager\ProposalController@pendingProposals');
-Route::get('proposal/detail/{id}', 'Manager\ProposalController@showProposal');
+Route::get('proposal/show/{id}', 'Manager\ProposalController@showProposal');
+Route::get('proposal/edit/{id}', 'Manager\ProposalController@editProposal');
+Route::post('proposal/update/{id}', 'Manager\ProposalController@updateProposal');
 Route::get('proposal/approve/{id}', 'Manager\ProposalController@proposalApprove');
 Route::get('proposal/disapprove/{id}', 'Manager\ProposalController@proposalDisapprove');
 

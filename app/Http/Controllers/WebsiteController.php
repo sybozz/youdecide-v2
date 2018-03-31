@@ -19,7 +19,7 @@ class WebsiteController extends Controller
 
     public function index()
     {
-      $proposals = DB::table('proposals')->get();
+      $proposals = DB::table('proposals')->orderBy('id', 'DESC')->get();
       return view('website.recentProposals', ['proposals'=>$proposals]);
     }
 

@@ -191,5 +191,14 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="{{ asset('public/manager') }}/js/demo.js"></script>
 
+<script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    menubar: false,
+    branding: false
+  });
+</script>
+
 
 </html>

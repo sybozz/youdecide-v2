@@ -11,7 +11,7 @@
   <div class="timeline-content">
     <div class="list-group">
       @foreach($proposals as $proposal)
-      <a href="#" class="list-group-item">
+      <a href="{{ url('proposal/view/'.$proposal->id) }}" class="list-group-item">
         <h4 class="list-group-item-heading">{{ $proposal->title }}</h4>
         <p class="list-group-item-text text-muted">{{ $proposal->created_at }}</p>
       </a>
