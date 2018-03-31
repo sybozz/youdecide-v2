@@ -27,25 +27,27 @@ class ProposalController extends Controller
   }
 
 
+  //
+  // Get proposal by idea
+  //
+  protected function getProposalById($pid)
+  {
+    return DB::table('proposals')
+                    ->join('users', 'proposals.created_by', '=', 'users.id')
+                    ->select('proposals.*', 'users.name')
+                    ->where('proposals.id', $pid)
+                    ->first();
+  }
+  // Show proposal
   public function showProposal($id)
   {
-    $proposal = DB::table('proposals')
-                                ->join('users', 'proposals.created_by', '=', 'users.id')
-                                ->select('proposals.*', 'users.name')
-                                ->where('proposals.id', $id)
-                                ->first();
+    $proposal = $this->getProposalById($id);
     return view('manager.showProposal', ['proposal'=>$proposal]);
   }
-
-
   // Edit profile by idea
   public function editProposal( $id )
   {
-    $proposal = DB::table('proposals')
-                                ->join('users', 'proposals.created_by', '=', 'users.id')
-                                ->select('proposals.*', 'users.name')
-                                ->where('proposals.id', $id)
-                                ->first();
+    $proposal = $this->getProposalById($id);
     return view('manager.proposalEdit', ['proposal'=>$proposal]);
   }
 
@@ -60,23 +62,34 @@ class ProposalController extends Controller
                                 ]);
     return redirect()->back()->with('status', 'Proposal updated successfully!');
   }
-
-
+  //
+  // Function Approve a proposal by its id
+  //
+  protected function approveProposalById($pid)
+  {
+    return DB::table('proposals')
+                      ->where('id', $pid)
+                      ->update([ 'status' => 1, 'approved_by' => Auth::id() ]);
+  }
+  // Approve a proposal
   public function proposalApprove($id)
   {
-    DB::table('proposals')
-                      ->where('id', $id)
-                      ->update([ 'status' => 1, 'approved_by' => Auth::id() ]);
+    $this->approveProposalById($id);
     return redirect()->back()->with('status', 'Proposal approved.');
   }
-
-
-
-  public function proposalDisapprove($id)
+  //
+  // Function :: disapprove proposal by id
+  //
+  protected function disapproveProposalById($pid)
   {
-    DB::table('proposals')
+    return DB::table('proposals')
                       ->where('id', $id)
                       ->update([ 'status' => 2, 'approved_by' => Auth::id() ]);
+  }
+  // Disapprove proposal
+  public function proposalDisapprove($id)
+  {
+    $this->disapproveProposalById($id);
     return redirect()->back()->with('status', 'Proposal disapproved!!');
   }
 
