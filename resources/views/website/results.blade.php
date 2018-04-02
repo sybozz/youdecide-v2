@@ -1,6 +1,6 @@
 @extends('layouts.website')
-@section('title', 'No votes')
-@section('pageHeader', 'No votes')
+@section('title', 'Results')
+@section('pageHeader', 'Results')
 
 @section('content')
 
