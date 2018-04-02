@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-   protected $redirectTo = '/recent-proposals';
+   protected $redirectTo = 'proposals/recent';
     // protected function authenticated(Request $request, $user)
     // {
     //     switch ($user->role) {

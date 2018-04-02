@@ -14,6 +14,10 @@
     <link href="{{ asset('public/website/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/website/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/website/css/style.css') }}" rel="stylesheet">
+
+    <!-- js -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
 </head>
 <body>
 <div id="app">
@@ -101,11 +105,11 @@
 <script src="{{ asset('public/js/app.js') }}"></script>
 <script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>
 <script>
-  tinymce.init({
-    selector: 'textarea',
-    menubar: false,
-    branding: false
-  });
+  // tinymce.init({
+  //   selector: 'textarea',
+  //   menubar: false,
+  //   branding: false
+  // });
 </script>
 
 </body>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -70,6 +71,16 @@ class UserController extends Controller
     // Insert Proposal to db
     public function saveProposal(Request $request)
     {
+
+      // app('profanityFilter')->replaceWith('#')->replaceFullWords(false)->filter($request->input('title'));
+
+      // Validator::make($request->input('title'), 'profanity', 'Offensive words detected.');
+
+      $this->validate($request, [
+        'title'=> 'required|profanity|max:255',
+        'description'=> 'required|profanity'
+      ]);
+
       DB::table('proposals')->insert([
         'title' => $request->title,
         'description' => $request->description,
