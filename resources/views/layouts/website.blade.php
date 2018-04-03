@@ -45,6 +45,7 @@
                     <li><a href="{{ url('proposals/recent') }}">Home</a></li>
                     @if(!Auth::guest())
                     <li><a href="{{ url('create-proposal') }}">Create</a></li>
+                    <li><a href="{{ url('activity/pending') }}">Activity</a></li>
                     @endif
                 </ul>
 
