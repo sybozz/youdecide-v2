@@ -112,6 +112,8 @@
   });
 </script>
 
+
+
 <script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
 <script type="text/javascript">
   $(document).profanityFilter({
