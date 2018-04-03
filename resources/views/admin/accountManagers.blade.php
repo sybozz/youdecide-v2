@@ -28,9 +28,16 @@
         <td>{{ $manager->name }}</td>
         <td>{{ $manager->email }}</td>
         <td>{{ $manager->created_at }}</td>
-        <td>Active</td>
         <td>
-          <a href="#" class="btn btn-danger btn-sm">Block</a>
+          @if($manager->isActive)
+            <span class="text-success">Active</span>
+          @else
+            <span class="text-danger">Inactive</span>
+          @endif
+        </td>
+        <td>
+          <a href="{{ url('accounts/manager/active/'.$manager->id) }}" class="btn btn-success btn-sm">Active</a>
+          <a href="{{ url('accounts/manager/block/'.$manager->id) }}" class="btn btn-danger btn-sm">Block</a>
         </td>
       </tr>
       @endforeach

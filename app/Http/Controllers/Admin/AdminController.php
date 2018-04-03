@@ -38,14 +38,14 @@ class AdminController extends Controller
     }
 
     // Manager accounts list
-    public function managersAccount()
+    public function managerAccounts()
     {
       $managers = DB::table('managers')->get();
       return view('admin.accountManagers', ['managers'=>$managers]);
     }
 
     // list of user accounts
-    public function usersAccount()
+    public function userAccounts()
     {
       $users = DB::table('users')->get();
       return view('admin.accountUsers', ['users'=>$users]);
@@ -57,6 +57,29 @@ class AdminController extends Controller
     {
       $proposals = DB::table('proposals')->orderBy('votes', 'DESC')->get();
       return view('admin.proposalsListByVote', ['proposals'=>$proposals]);
+    }
+
+
+    //
+    // Manager account activate by id
+    //
+    public function managerAccountEnable($id)
+    {
+      DB::table('managers')->where('id', $id)->update([
+        'isActive'=>1
+      ]);
+      return redirect()->back()->with('status', 'Account activated.');
+    }
+
+    //
+    // Manager account deactivate by id
+    //
+    public function managerAccountDisable($id)
+    {
+      DB::table('managers')->where('id', $id)->update([
+        'isActive'=>0
+      ]);
+      return redirect()->back()->with('status', 'Account blocked!!.');
     }
 
 

@@ -92,10 +92,15 @@ Route::get('admin/home', 'Admin\AdminController@index');
 Route::get('accouts/manager/create', 'Admin\AdminController@managerCreate');
 Route::post('accouts/manager/save', 'Admin\AdminController@saveManager');
 
-Route::get('accouts/manager', 'Admin\AdminController@managersAccount');
-Route::get('accouts/user', 'Admin\AdminController@usersAccount');
+Route::get('accouts/manager', 'Admin\AdminController@managerAccounts');
+Route::get('accouts/user', 'Admin\AdminController@userAccounts');
 
 Route::get('proposals/top-voted', 'Admin\AdminController@proposalsListByVote');
+
+Route::get('accounts/manager/active/{id}', 'Admin\AdminController@managerAccountEnable');
+Route::get('accounts/manager/block/{id}', 'Admin\AdminController@managerAccountDisable');
+
+
 
 
 
