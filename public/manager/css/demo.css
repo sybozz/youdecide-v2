@@ -70,3 +70,13 @@
         position: initial;
     }
 }
+
+
+
+
+.alert-bottom {
+  position: fixed;
+  right: 15px;
+  bottom: 50px;
+  z-index: 999;
+}

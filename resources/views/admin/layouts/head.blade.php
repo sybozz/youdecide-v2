@@ -37,9 +37,10 @@
 
 <style media="screen">
   .alert-bottom {
-    position: absolute;
+    position: fixed;
     right: 15px;
     bottom: 50px;
+    z-index: 999;
   }
 </style>
 

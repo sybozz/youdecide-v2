@@ -86,7 +86,7 @@
     <div class="container">
 
       @if (session('status'))
-          <div class="alert alert-dismissible alert-info">
+          <div class="alert alert-dismissible alert-warning alert-bottom">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
               {{ session('status') }}
           </div>
