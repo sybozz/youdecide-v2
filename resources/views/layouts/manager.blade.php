@@ -200,5 +200,12 @@
   });
 </script>
 
+<script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
+<script type="text/javascript">
+  $(document).profanityFilter({
+    externalSwears: 'public/js/swearWords.json'
+  });
+</script>
+
 
 </html>

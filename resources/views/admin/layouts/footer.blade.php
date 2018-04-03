@@ -35,3 +35,10 @@
 <script src="{{ asset('public/admin/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('public/admin/dist/js/demo.js')}}"></script>
+
+<script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
+<script type="text/javascript">
+  $(document).profanityFilter({
+    externalSwears: 'public/js/swearWords.json'
+  });
+</script>

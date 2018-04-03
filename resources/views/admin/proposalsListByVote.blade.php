@@ -29,7 +29,6 @@
         <td>{{ $proposal->votes }}</td>
         <td>
           <a href="#" class="btn btn-success btn-sm">Authorize</a>
-          <a href="#" class="btn btn-danger btn-sm">Block</a>
         </td>
       </tr>
       @endforeach

@@ -105,11 +105,18 @@
 <script src="{{ asset('public/js/app.js') }}"></script>
 <script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>
 <script>
-  // tinymce.init({
-  //   selector: 'textarea',
-  //   menubar: false,
-  //   branding: false
-  // });
+  tinymce.init({
+    selector: 'textarea',
+    menubar: false,
+    branding: false
+  });
+</script>
+
+<script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
+<script type="text/javascript">
+  $(document).profanityFilter({
+    externalSwears: 'public/js/swearWords.json'
+  });
 </script>
 
 </body>
