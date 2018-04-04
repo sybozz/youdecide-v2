@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('layouts.user')
 @section('title', 'View proposal')
 @section('pageHeader', $proposal->title)
 

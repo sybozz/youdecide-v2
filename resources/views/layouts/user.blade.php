@@ -11,8 +11,13 @@
     <title>@yield('title') | {{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/website/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/website/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/website/css/style.css') }}" rel="stylesheet">
+
+    <!-- js -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
 </head>
 <body>
 <div id="app">
@@ -37,9 +42,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                  <li><a href="{{ url('/') }}">Home</a></li>
-                  <li><a href="{{ url('/recent-proposals') }}">Proposals</a></li>
-                  <li><a href="{{ url('create-proposal') }}">Create</a></li>
+                    <li><a href="{{ url('proposals/recent') }}">Home</a></li>
+                    @if(!Auth::guest())
+                    <li><a href="{{ url('create-proposal') }}">Create</a></li>
+                    <li><a href="{{ url('activity/pending') }}">Activity</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -51,12 +58,13 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <img src="{{ url('/'.Auth::user()->profile_image) }}" alt="profile picture" class="img-circle" width="20">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/timeline') }}">Timeline</a></li>
-                                <li><a href="{{ url('/create-proposal') }}">New proposal</a></li>
+                                <li><a href="{{ url('/activity/published') }}">Activity</a></li>
+                                <li><a href="{{ url('/create-proposal') }}">Create proposal</a></li>
                                 <li><a href="{{ url('/account') }}">Settings</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
@@ -77,16 +85,43 @@
         </div>
     </nav>
 
-    @if(Auth::check())
-        @include('user.includes.profileCover')
-        <h2 class="page-header text-center">@yield('pageHeader')</h2>
-    @endif
+    <div class="container">
 
-    @yield('content')
+      @if (session('status'))
+          <div class="alert alert-dismissible alert-warning alert-bottom">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ session('status') }}
+          </div>
+      @endif
+
+      <h2 class="page-header text-center">@yield('pageHeader')</h2>
+
+      @section('content')
+      @show
+
+    </div>
+
 </div>
 
 <!-- Scripts -->
 <script src="{{ asset('public/js/app.js') }}"></script>
-<script src="{{ asset('public/js/scripts.js') }}"></script>
+<script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    menubar: false,
+    branding: false
+  });
+</script>
+
+
+
+<script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
+<script type="text/javascript">
+  $(document).profanityFilter({
+    externalSwears: 'public/js/swearWords.json'
+  });
+</script>
+
 </body>
 </html>

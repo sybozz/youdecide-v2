@@ -40,6 +40,8 @@ Route::get('/create-proposal', 'UserController@createProposal');
 Route::post('/proposal/save', 'UserController@saveProposal');
 Route::get('proposal/view/{id}', 'UserController@viewProposal');
 Route::get('proposal/vote/{id}', 'UserController@voteProposal');
+
+Route::post('user/profile/update/{id}', 'UserController@profileUpdate');
 /*
  *
  * ProposalController

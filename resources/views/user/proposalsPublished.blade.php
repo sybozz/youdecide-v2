@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('layouts.user')
 @section('title', 'Timeline')
 @section('pageHeader', 'Timeline')
 

@@ -58,10 +58,65 @@ class UserController extends Controller
       return view('user.proposalsUnpublished', ['proposals'=>$proposals]);
     }
 
+
+    //
+    // Settings
+    //
+    //
+
     public function accountSettings()
     {
-        return view('user.accountSettings');
+      $user = DB::table('users')->where('id', Auth::id())->first();
+      return view('user.accountSettings', ['user'=>$user]);
     }
+
+    // image upload function
+    protected function imageUpload($file, $uid)
+    {
+      $this->validate($file, [
+        'profileImage'=> 'image|mimes:jpg,jpeg,png|max:2048'
+      ]);
+
+      if ($file->hasFile('profileImage')) {
+        $image = $file->file('profileImage');
+        $name = $uid.time().'.'.$image->getClientOriginalExtension();
+        // $destination = public_path('user/uploads/');
+        $destination = 'user/uploads/';
+        $image->move($destination, $name);
+        // $this->save();
+        return $destination.$name;
+      } else {
+        return $file->input('current_profileImage');
+      }
+
+    }
+
+    // Update profile
+    public function profileUpdate(Request $request, $id)
+    {
+
+      if ($request->password) {
+        $this->validate($request, [
+          'password'=> 'size:6'
+        ]);
+      }
+
+      $image_path = $this->imageUpload($request, $id);
+
+      DB::table('users')->where('id', $id)->update([
+        'name' => $request->input('name'),
+        'password'  => bcrypt($request->input('password')),
+        'profile_image'=> $image_path
+      ]);
+
+      return back()->with('status', 'Success');
+
+
+    }
+
+
+
+
 
     // Offer creating a proposal
     public function createProposal()
@@ -126,5 +181,8 @@ class UserController extends Controller
       }
 
     }
+
+
+
 
 }

@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('layouts.user')
 @section('title', 'New proposal')
 @section('pageHeader', 'Submit new proposal')
 
