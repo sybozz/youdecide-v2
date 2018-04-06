@@ -168,7 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         // Filter for bad words
-        Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
+//        Askedio\Laravel5ProfanityFilter\Providers\ProfanityFilterServiceProvider::class,
 
         /*
          * Application Service Providers...

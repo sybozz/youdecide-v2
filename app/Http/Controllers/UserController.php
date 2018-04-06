@@ -81,7 +81,7 @@ class UserController extends Controller
         $image = $file->file('profileImage');
         $name = $uid.time().'.'.$image->getClientOriginalExtension();
         // $destination = public_path('user/uploads/');
-        $destination = 'user/uploads/';
+        $destination = 'public/user/uploads/';
         $image->move($destination, $name);
         // $this->save();
         return $destination.$name;
@@ -97,7 +97,7 @@ class UserController extends Controller
 
       if ($request->password) {
         $this->validate($request, [
-          'password'=> 'size:6'
+          'password'=> 'min:6'
         ]);
       }
 
@@ -115,9 +115,6 @@ class UserController extends Controller
     }
 
 
-
-
-
     // Offer creating a proposal
     public function createProposal()
     {
@@ -126,14 +123,9 @@ class UserController extends Controller
     // Insert Proposal to db
     public function saveProposal(Request $request)
     {
-
-      // app('profanityFilter')->replaceWith('#')->replaceFullWords(false)->filter($request->input('title'));
-
-      // Validator::make($request->input('title'), 'profanity', 'Offensive words detected.');
-
       $this->validate($request, [
-        'title'=> 'required|profanity|max:255',
-        'description'=> 'required|profanity'
+        'title'=> 'required|max:255',
+        'description'=> 'required'
       ]);
 
       DB::table('proposals')->insert([
@@ -159,19 +151,19 @@ class UserController extends Controller
     public function voteProposal($id)
     {
 
-      $hasVote = DB::table('user_votes')
+      $hasVote = DB::table('votes')
                               ->where('proposal_id', $id)
                               ->where('user_id', Auth::id())
-                              ->value('vote');
+                              ->value('hasVote');
 
       if(!$hasVote) {
 
-        DB::table('proposals')->where('id', $id)->increment('votes');
+        DB::table('proposals')->where('id', $id)->increment('total_votes');
 
-        DB::table('user_votes')->insert([
+        DB::table('votes')->insert([
           'user_id'     => Auth::id(),
           'proposal_id' => $id,
-          'vote'        => 1
+          'hasVote'        => 1
         ]);
 
         return redirect()->back()->with('status', 'Thanks for your vote!!');

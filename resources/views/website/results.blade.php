@@ -20,11 +20,7 @@
                                     <div class="item-content-meta">
                                         <strong class="text-muted">Published on: {{ $proposal->updated_at }}</strong>
                                         <span class="pull-right">
-                                            <!-- <a href="{{ url('proposal/like/'.$proposal->id) }}" class="btn btn-info btn-sm">Like</a>
-                                            | -->
-                                            <a href="{{ url('proposal/vote/'.$proposal->id) }}" class="btn btn-success btn-sm">Vote <i class="fa fa-plus"></i></a>
-                                            |
-                                            <span class="text-right text-muted">Total votes: <span class="badge">{{ $proposal->votes }}</span></span>
+                                            <span class="text-right text-muted">Total votes: <span class="badge">{{ $proposal->total_votes }}</span></span>
                                         </span>
 
                                     </div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c0adc9bd16d9ef941c6f5d66fbdf5c5",
+    "content-hash": "05723717068a4243df5daf890f14fc4b",
     "packages": [
         {
             "name": "askedio/laravel5-profanity-filter",
@@ -1086,6 +1086,62 @@
                 "mailer"
             ],
             "time": "2018-01-23T07:37:21+00:00"
+        },
+        {
+            "name": "sworup/profanityfilter",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sworup/ProfanityFilter.git",
+                "reference": "0f15acc78dccfc7d39734f3d0e71be5459d0c6b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sworup/ProfanityFilter/zipball/0f15acc78dccfc7d39734f3d0e71be5459d0c6b7",
+                "reference": "0f15acc78dccfc7d39734f3d0e71be5459d0c6b7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.1",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sworup\\ProfanityFilter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sworup Shakya",
+                    "email": "sworup.shakya@gmail.com",
+                    "homepage": "http://sworup.com.np",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Profanity filter package would help you censor some of the bad words users put in your posts and/or comments.",
+            "homepage": "https://github.com/Sworup/ProfanityFilter",
+            "keywords": [
+                "Profanity Filter",
+                "censor",
+                "curse words",
+                "laravel",
+                "remove profanity",
+                "swear word"
+            ],
+            "time": "2017-01-25T11:18:39+00:00"
         },
         {
             "name": "symfony/console",

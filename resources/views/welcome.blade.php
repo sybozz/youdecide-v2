@@ -69,6 +69,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
+                        <img src="{{ url('/'.Auth::user()->profile_image) }}" alt="" class="img-circle" width="20">
                         <a href="{{ url('/activity/published') }}">{{ Auth::user()->name }}</a>
                     @else
                         <a href="{{ url('/login') }}">Login</a>

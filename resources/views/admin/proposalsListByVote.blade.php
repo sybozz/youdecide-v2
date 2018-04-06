@@ -6,7 +6,7 @@
 @section('mainContent')
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title">Data Table With Full Features</h3>
+    <h3 class="box-title">Top votes</h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body">
@@ -24,11 +24,11 @@
       @foreach( $proposals as $proposal )
       <tr>
         <td>{{ $proposal->id }}</td>
-        <td>{{ $proposal->title }}</td>
+        <td><a href="{{ url('proposal/display/'.$proposal->id) }}">{{ $proposal->title }}</a></td>
         <td>{{ $proposal->updated_at }}</td>
-        <td>{{ $proposal->votes }}</td>
+        <td>{{ $proposal->total_votes }}</td>
         <td>
-          <a href="#" class="btn btn-success btn-sm">Authorize</a>
+          <a href="{{ url('proposal/authorize/'.$proposal->id) }}" class="btn btn-success btn-sm">Authorize</a>
         </td>
       </tr>
       @endforeach

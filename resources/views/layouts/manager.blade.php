@@ -73,17 +73,23 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                    <a href="{{ url('account/user/all') }}">
+                        <i class="pe-7s-users"></i>
+                        <p>All users</p>
                     </a>
                 </li>
-                <li class="active-pro">
-                    <a href="#">
-                        <i class="pe-7s-tools"></i>
-                        <p>Settings</p>
-                    </a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="#">--}}
+                        {{--<i class="pe-7s-bell"></i>--}}
+                        {{--<p>Notifications</p>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li class="active-pro">--}}
+                    {{--<a href="#">--}}
+                        {{--<i class="pe-7s-tools"></i>--}}
+                        {{--<p>Settings</p>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
             </ul>
         </div>
     </div>
@@ -103,29 +109,29 @@
 
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-globe"></i>
-                                <b class="caret hidden-sm hidden-xs"></b>
-                                <span class="notification hidden-sm hidden-xs">5</span>
-                                <p class="hidden-lg hidden-md">
-                                    5 Notifications
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">
-                                <p>Manager</p>
-                            </a>
-                        </li>
+                        {{--<li class="dropdown">--}}
+                            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+                                {{--<i class="fa fa-globe"></i>--}}
+                                {{--<b class="caret hidden-sm hidden-xs"></b>--}}
+                                {{--<span class="notification hidden-sm hidden-xs">5</span>--}}
+                                {{--<p class="hidden-lg hidden-md">--}}
+                                    {{--5 Notifications--}}
+                                    {{--<b class="caret"></b>--}}
+                                {{--</p>--}}
+                            {{--</a>--}}
+                            {{--<ul class="dropdown-menu">--}}
+                                {{--<li><a href="#">Notification 1</a></li>--}}
+                                {{--<li><a href="#">Notification 2</a></li>--}}
+                                {{--<li><a href="#">Notification 3</a></li>--}}
+                                {{--<li><a href="#">Notification 4</a></li>--}}
+                                {{--<li><a href="#">Another notification</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="">--}}
+                                {{--<p>Manager</p>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">
                                 <p>Log out</p>
@@ -158,7 +164,7 @@
         <footer class="footer">
             <div class="container-fluid">
                 <p class="copyright pull-right">
-                    Template credit: &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    YouDecide &copy; <span class="text-warning">Rebel Geeks</span>
                 </p>
             </div>
         </footer>

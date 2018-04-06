@@ -8,8 +8,18 @@
           <h4 class="title">Edit Profile</h4>
       </div>
       <div class="content">
-          <form action="{{ url('manager/profile/update') }}" method="post">
+          <form action="{{ url('manager/profile/update/'.$manager->id) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <div><img src="{{ url('/'.$manager->profile_image) }}" alt="profile image" height="150"></div>
+                          <small class="help-block">Recommanded size: 150x150</small>
+                          <input type="file" name="profileImage" id="proifleImage" class="form-control">
+                          <input type="hidden" name="current_profileImage" value="{{ $manager->profile_image }}">
+                      </div>
+                  </div>
+              </div>
               <div class="row">
                   <div class="col-md-12">
                       <div class="form-group">
@@ -22,7 +32,7 @@
                   <div class="col-md-12">
                       <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" name="email" class="form-control" value="{{ $manager->email }}" placeholder="Email">
+                          <input type="email" name="email" class="form-control" value="{{ $manager->email }}" placeholder="Email" disabled>
                       </div>
                   </div>
               </div>
@@ -34,14 +44,6 @@
                       </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                      <div class="form-group">
-                          <label for="password-confirm">Confirm Password</label>
-                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                      </div>
-                  </div>
-              </div>
               <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
               <div class="clearfix"></div>
           </form>

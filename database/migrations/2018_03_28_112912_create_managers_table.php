@@ -19,7 +19,7 @@ class CreateManagersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->text('profile_image')->nullable();
-            $table->boolean('isActive')->default(0);
+            $table->boolean('isActive')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

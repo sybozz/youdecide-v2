@@ -12,7 +12,7 @@
     <div class="list-group">
       @foreach($proposals as $proposal)
       <a href="{{ url('proposal/view/'.$proposal->id) }}" class="list-group-item">
-        <span class="badge">{{ $proposal->votes }}</span>
+        <span class="badge">{{ $proposal->total_votes }}</span>
         <h4 class="list-group-item-heading">{{ $proposal->title }}</h4>
         <p class="list-group-item-text text-muted">Published on: {{ $proposal->updated_at }}</p>
       </a>

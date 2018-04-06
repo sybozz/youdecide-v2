@@ -58,7 +58,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                              <img src="{{ url('/'.Auth::user()->profile_image) }}" alt="profile picture" class="img-circle" width="20">
+                              <img src="{{ url('/'.Auth::user()->profile_image) }}" alt="" class="img-circle" width="20">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -105,14 +105,14 @@
 
 <!-- Scripts -->
 <script src="{{ asset('public/js/app.js') }}"></script>
-<script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>
-<script>
-  tinymce.init({
-    selector: 'textarea',
-    menubar: false,
-    branding: false
-  });
-</script>
+{{--<script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>--}}
+{{--<script>--}}
+  {{--tinymce.init({--}}
+    {{--selector: 'textarea',--}}
+    {{--menubar: false,--}}
+    {{--branding: false--}}
+  {{--});--}}
+{{--</script>--}}
 
 
 

@@ -18,6 +18,7 @@
     <!-- js -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/user/js/inappropriate.js') }}"></script>
 </head>
 <body>
 <div id="app">
@@ -58,7 +59,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="{{ url('/'.Auth::user()->profile_image) }}" alt="profile picture" class="img-circle" width="20">
+                                <img src="{{ url('/'.Auth::user()->profile_image) }}" alt="" class="img-circle" width="20">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -100,6 +101,12 @@
       @show
 
     </div>
+
+    <footer class="footer">
+       <div class="alert-bottom">
+           <a href="{{ url('user/report/issue') }}"><i class="fa fa-exclamation-triangle"></i> Report us an issue</a>
+       </div>
+    </footer>
 
 </div>
 

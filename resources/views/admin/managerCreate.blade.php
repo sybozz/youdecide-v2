@@ -12,7 +12,7 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form action="{{ url('accouts/manager/save') }}" method="post" role="form">
+    <form action="{{ url('accout/manager/save') }}" method="post" role="form">
       {{ csrf_field() }}
       <div class="box-body">
         <div class="form-group">

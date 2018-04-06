@@ -19,7 +19,7 @@ class WebsiteController extends Controller
 
     public function index()
     {
-      $proposals = DB::table('proposals')->orderBy('id', 'DESC')->get();
+      $proposals = DB::table('proposals')->where('status', 1)->orderBy('id', 'DESC')->get();
       return view('website.recentProposals', ['proposals'=>$proposals]);
     }
 
@@ -33,8 +33,18 @@ class WebsiteController extends Controller
     // Show no vote proposalsPending
     public function novoteProposals()
     {
-      $proposals = DB::table('proposals')->where('votes', 0)->orderBy('id', 'DESC')->get();
+      $proposals = DB::table('proposals')->where('total_votes', 0)->where('status', 1)->orderBy('id', 'DESC')->get();
       return view('website.proposalNoVotes', ['proposals'=>$proposals]);
+    }
+
+
+//    Results
+    public function proposalsResult()
+    {
+        $proposals = DB::table('results')
+            ->join('proposals', 'results.proposal_id', '=', 'proposals.id')
+            ->get();
+        return view('website.results', ['proposals' => $proposals]);
     }
 
 

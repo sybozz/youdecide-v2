@@ -28,9 +28,17 @@
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
         <td>{{ $user->created_at }}</td>
-        <td>Active</td>
         <td>
-          <a href="#" class="btn btn-danger btn-sm">Block</a>
+            @if($user->isActive)
+                <span class="text-success">Active</span>
+            @else
+                <span class="text-danger">Blocked</span>
+            @endif
+
+        </td>
+        <td>
+          <a href="{{ url('accounts/user/active/'.$user->id) }}" class="btn btn-success btn-sm">Active</a>
+          <a href="{{ url('accounts/user/block/'.$user->id) }}" class="btn btn-danger btn-sm">Block</a>
         </td>
       </tr>
       @endforeach

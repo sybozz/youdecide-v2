@@ -25,6 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  * */
 Route::get('proposals/recent', 'WebsiteController@index');
 Route::get('proposals/no-vote', 'WebsiteController@novoteProposals');
+Route::get('proposals/results', 'WebsiteController@proposalsResult');
 
 
 
@@ -42,6 +43,11 @@ Route::get('proposal/view/{id}', 'UserController@viewProposal');
 Route::get('proposal/vote/{id}', 'UserController@voteProposal');
 
 Route::post('user/profile/update/{id}', 'UserController@profileUpdate');
+
+Route::get('user/report/issue', function() {
+    return "Coming soon.";
+});
+
 /*
  *
  * ProposalController
@@ -77,7 +83,9 @@ Route::post('proposal/update/{id}', 'Manager\ProposalController@updateProposal')
 Route::get('proposal/approve/{id}', 'Manager\ProposalController@proposalApprove');
 Route::get('proposal/disapprove/{id}', 'Manager\ProposalController@proposalDisapprove');
 
-Route::post('manager/profile/update', 'Manager\ManagerController@updateProfile');
+Route::get('account/user/all', 'Manager\ManagerController@getAllUsers');
+
+Route::post('manager/profile/update/{id}', 'Manager\ManagerController@profileUpdate');
 
 
 
@@ -91,16 +99,28 @@ Route::get('admin-login', 'Admin\Auth\LoginController@showLoginForm')->name('adm
 Route::post('admin-login', 'Admin\Auth\LoginController@login');
 Route::get('admin/home', 'Admin\AdminController@index');
 
-Route::get('accouts/manager/create', 'Admin\AdminController@managerCreate');
-Route::post('accouts/manager/save', 'Admin\AdminController@saveManager');
+Route::get('account/manager/create', 'Admin\AdminController@managerCreate');
+Route::post('account/manager/save', 'Admin\AdminController@saveManager');
 
-Route::get('accouts/manager', 'Admin\AdminController@managerAccounts');
-Route::get('accouts/user', 'Admin\AdminController@userAccounts');
+Route::get('accounts/manager/all', 'Admin\AdminController@managerAccounts');
+Route::get('accounts/user/all', 'Admin\AdminController@userAccounts');
 
-Route::get('proposals/top-voted', 'Admin\AdminController@proposalsListByVote');
 
 Route::get('accounts/manager/active/{id}', 'Admin\AdminController@managerAccountEnable');
 Route::get('accounts/manager/block/{id}', 'Admin\AdminController@managerAccountDisable');
+
+Route::get('accounts/user/active/{id}', 'Admin\AdminController@userAccountEnable');
+Route::get('accounts/user/block/{id}', 'Admin\AdminController@userAccountDisable');
+
+
+
+Route::get('proposals/all', 'Admin\AdminController@proposalsAll');
+Route::get('proposal/delete/{id}', 'Admin\AdminController@proposalDelete');
+Route::get('proposals/top-votes', 'Admin\AdminController@proposalsListByVote');
+Route::get('proposal/authorize/{id}', 'Admin\AdminController@proposalAuthorize');
+Route::get('proposals/authorized/all', 'Admin\AdminController@proposalAuthorizedList');
+Route::get('proposals/unpublished/all', 'Admin\AdminController@proposalUnpublishedList');
+Route::get('proposal/display/{id}', 'Admin\AdminController@displayProposal');
 
 
 
