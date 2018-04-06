@@ -44,7 +44,7 @@
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
         @endif
-        <input type="email" name="email" class="form-control" placeholder="Email">
+        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

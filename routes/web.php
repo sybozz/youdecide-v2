@@ -105,14 +105,11 @@ Route::post('account/manager/save', 'Admin\AdminController@saveManager');
 Route::get('accounts/manager/all', 'Admin\AdminController@managerAccounts');
 Route::get('accounts/user/all', 'Admin\AdminController@userAccounts');
 
-
 Route::get('accounts/manager/active/{id}', 'Admin\AdminController@managerAccountEnable');
 Route::get('accounts/manager/block/{id}', 'Admin\AdminController@managerAccountDisable');
 
 Route::get('accounts/user/active/{id}', 'Admin\AdminController@userAccountEnable');
 Route::get('accounts/user/block/{id}', 'Admin\AdminController@userAccountDisable');
-
-
 
 Route::get('proposals/all', 'Admin\AdminController@proposalsAll');
 Route::get('proposal/delete/{id}', 'Admin\AdminController@proposalDelete');

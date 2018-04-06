@@ -12,16 +12,16 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form action="{{ url('accout/manager/save') }}" method="post" role="form">
+    <form action="{{ url('account/manager/save') }}" method="post" role="form">
       {{ csrf_field() }}
       <div class="box-body">
         <div class="form-group">
           <label for="inName">Full name</label>
-          <input type="text" name="name" class="form-control" id="inName" placeholder="Enter name">
+          <input type="text" name="name" value="{{ old('value') }}" class="form-control" id="inName" placeholder="Enter name">
         </div>
         <div class="form-group">
           <label for="InputEmail1">Email address</label>
-          <input type="email" name="email" class="form-control" id="InputEmail1" placeholder="Enter email">
+          <input type="email" name="email" value="{{ old('value') }}" class="form-control" id="InputEmail1" placeholder="Enter email">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
