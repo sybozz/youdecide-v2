@@ -14,8 +14,12 @@
             {!! $proposal->description !!}
         </div>
         <!-- /.box-body -->
-        <hr>
-        <a href="{{ URL::previous() }}" class="btn btn-info pull-right">Back</a>
+
+        <div class="box-footer">
+            <a href="{{ URL::previous() }}" class="btn btn-info">Back</a>
+            <a href="{{ url('proposal/authorize/'.$proposal->id) }}" class="btn btn-success">Authorize</a>
+        </div>
+
     </div>
     <!-- /.box -->
 

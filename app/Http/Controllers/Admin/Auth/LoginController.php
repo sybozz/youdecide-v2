@@ -48,6 +48,15 @@ class LoginController extends Controller
        return $this->sendFailedLoginResponse($request);
    }
 
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+    }
+
    protected function guard()
    {
        return Auth::guard('admin');

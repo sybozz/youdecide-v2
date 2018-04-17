@@ -11,6 +11,7 @@
             <div class="content table-responsive table-full-width">
                 <table class="table table-hover table-striped">
                     <thead>
+                    {{--<th>SL</th>--}}
                     <th>ID</th>
                     <th width="50%">Title</th>
                     <th>Created on</th>
@@ -19,6 +20,8 @@
                     <tbody>
                     @foreach($proposals as $proposal)
                     <tr>
+                        {{--<td>{{ $loop->index+1 }}</td>--}}
+                        {{--<td>{{ $loop->iteration }}</td>--}}
                         <td>{{ $proposal->id }}</td>
                         <td><a href="{{ url('proposal/show/'.$proposal->id) }}">{{ $proposal->title }}</a></td>
                         <td>{{ $proposal->created_at }}</td>
@@ -34,6 +37,8 @@
 
                     </tbody>
                 </table>
+
+                {{ $proposals->links() }}
 
             </div>
         </div>

@@ -72,7 +72,7 @@ class ManagerController extends Controller
   // Get all users
   public function getAllUsers()
   {
-    return view('manager.allUsers', ['users'=>DB::table('users')->get()]);
+    return view('manager.allUsers', ['users'=>DB::table('users')->paginate(10)]);
   }
 
 

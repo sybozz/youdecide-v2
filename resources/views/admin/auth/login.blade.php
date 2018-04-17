@@ -26,6 +26,9 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -47,10 +50,21 @@
         <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
+
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
+      <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+          {!! NoCaptcha::display() !!}
+          @if ($errors->has('g-recaptcha-response'))
+            <span class="help-block">
+                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+            </span>
+          @endif
+      </div>
+
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">

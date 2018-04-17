@@ -103,18 +103,24 @@ Route::get('account/manager/create', 'Admin\AdminController@managerCreate');
 Route::post('account/manager/save', 'Admin\AdminController@saveManager');
 
 Route::get('accounts/manager/all', 'Admin\AdminController@managerAccounts');
+Route::get('accounts/manager/suspended', 'Admin\AdminController@blockedManagers');
 Route::get('accounts/user/all', 'Admin\AdminController@userAccounts');
+Route::get('accounts/user/suspended', 'Admin\AdminController@blockedUsers');
 
 Route::get('accounts/manager/active/{id}', 'Admin\AdminController@managerAccountEnable');
 Route::get('accounts/manager/block/{id}', 'Admin\AdminController@managerAccountDisable');
+Route::get('accounts/manager/delete/{id}', 'Admin\AdminController@deleteManagerAccount');
 
 Route::get('accounts/user/active/{id}', 'Admin\AdminController@userAccountEnable');
 Route::get('accounts/user/block/{id}', 'Admin\AdminController@userAccountDisable');
+Route::get('accounts/user/delete/{id}', 'Admin\AdminController@deleteUserAccount');
 
 Route::get('proposals/all', 'Admin\AdminController@proposalsAll');
 Route::get('proposal/delete/{id}', 'Admin\AdminController@proposalDelete');
 Route::get('proposals/top-votes', 'Admin\AdminController@proposalsListByVote');
 Route::get('proposal/authorize/{id}', 'Admin\AdminController@proposalAuthorize');
+Route::get('proposal/publish/{id}', 'Admin\AdminController@proposalPublish');
+Route::get('proposal/unpublish/{id}', 'Admin\AdminController@proposalUnpublish');
 Route::get('proposals/authorized/all', 'Admin\AdminController@proposalAuthorizedList');
 Route::get('proposals/unpublished/all', 'Admin\AdminController@proposalUnpublishedList');
 Route::get('proposal/display/{id}', 'Admin\AdminController@displayProposal');

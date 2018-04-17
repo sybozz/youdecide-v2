@@ -32,6 +32,8 @@
                 </ul>
             </div>
 
+            {{ $proposals->links() }}
+
         </div>
         <div class="col-md-3">
             @include('website.includes.sidebar')

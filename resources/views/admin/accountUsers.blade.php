@@ -6,7 +6,7 @@
 @section('mainContent')
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title">Data Table With Full Features</h3>
+    <h3 class="box-title">Active user accounts.</h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body">
@@ -37,8 +37,8 @@
 
         </td>
         <td>
-          <a href="{{ url('accounts/user/active/'.$user->id) }}" class="btn btn-success btn-sm">Active</a>
-          <a href="{{ url('accounts/user/block/'.$user->id) }}" class="btn btn-danger btn-sm">Block</a>
+          {{--<a href="{{ url('accounts/user/active/'.$user->id) }}" class="btn btn-success btn-sm">Active</a>--}}
+          <a href="{{ url('accounts/user/block/'.$user->id) }}" class="btn btn-danger btn-sm">Suspend</a>
         </td>
       </tr>
       @endforeach

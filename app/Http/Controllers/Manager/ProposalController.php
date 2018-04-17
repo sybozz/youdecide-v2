@@ -21,7 +21,7 @@ class ProposalController extends Controller
                                   ->join('users', 'proposals.created_by', '=', 'users.id')
                                   ->select('proposals.*', 'users.name')
                                   ->where('proposals.status', 0)
-                                  ->get();
+                                  ->paginate(5);
 
     return view('manager.pendingProposals', ['proposals'=>$proposals]);
   }

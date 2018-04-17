@@ -8,6 +8,9 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{ asset('public/admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('public/admin//bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- Morris.js charts -->
 <script src="{{ asset('public/admin/bower_components/raphael/raphael.min.js')}}"></script>
 <script src="{{ asset('public/admin/bower_components/morris.js/morris.min.js')}}"></script>
@@ -36,9 +39,24 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('public/admin/dist/js/demo.js')}}"></script>
 
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
+</script>
+
 <script type="text/javascript" src="{{ asset('public/js/jquery.profanityfilter.js') }}"></script>
 <script type="text/javascript">
   $(document).profanityFilter({
     externalSwears: 'public/js/swearWords.json'
   });
 </script>
+

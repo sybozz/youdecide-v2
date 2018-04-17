@@ -25,7 +25,8 @@
       </a>
       <ul class="treeview-menu">
         <li><a href="{{ url('account/manager/create') }}"><i class="fa fa-circle-o"></i> Create Manager</a></li>
-        <li><a href="{{ url('accounts/manager/all') }}"><i class="fa fa-circle-o"></i> Managers</a></li>
+        <li><a href="{{ url('accounts/manager/all') }}"><i class="fa fa-circle-o"></i> Active Managers</a></li>
+        <li><a href="{{ url('accounts/manager/suspended') }}"><i class="fa fa-circle-o"></i> Suspended accounts</a></li>
       </ul>
     </li>
     <li class="treeview">
@@ -37,7 +38,9 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{ url('accounts/user/all') }}"><i class="fa fa-circle-o"></i> All users</a></li>
+        {{--<li><a href="{{ url('accounts/user/pending') }}"><i class="fa fa-circle-o"></i> Pending accounts</a></li>--}}
+        <li><a href="{{ url('accounts/user/all') }}"><i class="fa fa-circle-o"></i> Active accounts</a></li>
+        <li><a href="{{ url('accounts/user/suspended') }}"><i class="fa fa-circle-o"></i> Suspended accounts</a></li>
       </ul>
     </li>
     <li class="treeview">
@@ -49,7 +52,7 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{ url('proposals/all') }}"><i class="fa fa-circle-o"></i> All</a></li>
+        <li><a href="{{ url('proposals/all') }}"><i class="fa fa-circle-o"></i> Published</a></li>
         <li><a href="{{ url('proposals/top-votes') }}"><i class="fa fa-circle-o"></i> Top voted</a></li>
         <li><a href="{{ url('proposals/authorized/all') }}"><i class="fa fa-circle-o"></i> Authorized</a></li>
         <li><a href="{{ url('proposals/unpublished/all') }}"><i class="fa fa-circle-o"></i> Unpublished</a></li>

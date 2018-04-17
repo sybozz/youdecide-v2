@@ -10,7 +10,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="example1" class="table table-bordered table-hover dataTable">
                 <thead>
                 <tr>
                     <th>Proposal ID.</th>
@@ -28,7 +28,7 @@
                         <td>{{ $proposal->updated_at }}</td>
                         <td>{{ $proposal->total_votes }}</td>
                         <td>
-                            <a onclick="return confirm('This will permanently delete the proposal. Are you sure?')" href="{{ url('proposal/delete/'.$proposal->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ url('proposal/unpublish/'.$proposal->id) }}" class="btn btn-warning btn-sm">Take down</a>
                         </td>
                     </tr>
                 @endforeach

@@ -17,7 +17,7 @@
                     <th>Proposal ID.</th>
                     <th>Title</th>
                     <th>Published on</th>
-                    <th>Unpublished by</th>
+                    <th>Approved by</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -27,9 +27,10 @@
                         <td>{{ $proposal->id }}</td>
                         <td><a href="{{ url('proposal/display/'.$proposal->id) }}">{{ $proposal->title }}</a></td>
                         <td>{{ $proposal->updated_at }}</td>
-                        <td>{{ $proposal->approved_by }}</td>
+                        <td>{{ $proposal->name }}</td>
                         <td>
-                            <a href="{{ url('proposal/authorize/'.$proposal->id) }}" class="btn btn-success btn-sm">Authorize</a>
+                            <a href="{{ url('proposal/publish/'.$proposal->id) }}" class="btn btn-success btn-sm">Publish</a>
+                            <a onclick="return confirm('This will permanently delete the proposal. Are you sure?')" href="{{ url('proposal/delete/'.$proposal->id) }}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 @endforeach

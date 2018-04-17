@@ -38,6 +38,8 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="{{ asset('public/manager') }}/css/font-awesome.min.css" rel="stylesheet" />
     <link href="{{ asset('public/manager') }}/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 

@@ -29,8 +29,29 @@ class LoginController extends Controller
      */
      protected $redirectTo = '/manager/home';
 
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        //return $request->only($this->username(), 'password');
+        return ['email' => $request->{$this->username()}, 'password' => $request->password, 'isActive' => 1];
+    }
 
-     public function showLoginForm()
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+    }
+
+
+    public function showLoginForm()
      {
          return view('manager.auth.login');
      }
@@ -45,6 +66,7 @@ class LoginController extends Controller
 
          return $this->sendFailedLoginResponse($request);
      }
+
 
      protected function guard()
      {

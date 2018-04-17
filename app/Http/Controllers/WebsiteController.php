@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Proposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,8 @@ class WebsiteController extends Controller
 
     public function index()
     {
-      $proposals = DB::table('proposals')->where('status', 1)->orderBy('id', 'DESC')->get();
+      $proposals = DB::table('proposals')->where('status', 1)->orderBy('id', 'DESC')->paginate(5);
+//        $proposals = Proposal::paginate(5);
       return view('website.recentProposals', ['proposals'=>$proposals]);
     }
 
@@ -33,7 +35,7 @@ class WebsiteController extends Controller
     // Show no vote proposalsPending
     public function novoteProposals()
     {
-      $proposals = DB::table('proposals')->where('total_votes', 0)->where('status', 1)->orderBy('id', 'DESC')->get();
+      $proposals = DB::table('proposals')->where('total_votes', 0)->where('status', 1)->orderBy('id', 'DESC')->paginate(5);
       return view('website.proposalNoVotes', ['proposals'=>$proposals]);
     }
 
@@ -43,7 +45,7 @@ class WebsiteController extends Controller
     {
         $proposals = DB::table('results')
             ->join('proposals', 'results.proposal_id', '=', 'proposals.id')
-            ->get();
+            ->paginate(5);
         return view('website.results', ['proposals' => $proposals]);
     }
 

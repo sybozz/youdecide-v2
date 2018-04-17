@@ -42,6 +42,11 @@ class AdminController extends Controller
     // Save manager account
     public function saveManager( Request $request )
     {
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6'
+        ]);
       DB::table('managers')->insert([
         'name'    => $request->input('name'),
         'email'    => $request->input('email'),
@@ -53,28 +58,24 @@ class AdminController extends Controller
     // Manager accounts list
     public function managerAccounts()
     {
-      $managers = DB::table('managers')->get();
+      $managers = DB::table('managers')->where('isActive', 1)->get();
       return view('admin.accountManagers', ['managers'=>$managers]);
     }
-
-    // list of user accounts
-    public function userAccounts()
+    // Manager accounts list - suspended or blocked accounts
+    public function blockedManagers()
     {
-      $users = DB::table('users')->get();
-      return view('admin.accountUsers', ['users'=>$users]);
+      $managers = DB::table('managers')->where('isActive', 0)->get();
+      return view('admin.blockedManagers', ['managers'=>$managers]);
     }
-
-
-
     //
     // Manager account activate by id
     //
     public function managerAccountEnable($id)
     {
-      DB::table('managers')->where('id', $id)->update([
-        'isActive'=>1
-      ]);
-      return redirect()->back()->with('status', 'Account activated.');
+        DB::table('managers')->where('id', $id)->update([
+            'isActive'=>1
+        ]);
+        return redirect()->back()->with('status', 'Account activated.');
     }
 
     //
@@ -82,11 +83,33 @@ class AdminController extends Controller
     //
     public function managerAccountDisable($id)
     {
-      DB::table('managers')->where('id', $id)->update([
-        'isActive'=>0
-      ]);
-      return redirect()->back()->with('status', 'Account blocked!!.');
+        DB::table('managers')->where('id', $id)->update([
+            'isActive'=>0
+        ]);
+        return redirect()->back()->with('status', 'Account blocked!!.');
     }
+    //
+    // Manager account delete by id
+    //
+    public function deleteManagerAccount($id)
+    {
+        DB::table('managers')->where('id', $id)->delete();
+        return redirect()->back()->with('status', 'Account deleted!!.');
+    }
+
+    // list of user accounts
+    public function userAccounts()
+    {
+      $users = DB::table('users')->where('isActive', 1)->get();
+      return view('admin.accountUsers', ['users'=>$users]);
+    }
+    // list of user accounts - blocked
+    public function blockedUsers()
+    {
+      $users = DB::table('users')->where('isActive', 0)->get();
+      return view('admin.blockedUsers', ['users'=>$users]);
+    }
+
     //
     // user account activate by id
     //
@@ -108,6 +131,13 @@ class AdminController extends Controller
       ]);
       return redirect()->back()->with('status', 'Account blocked!!.');
     }
+    // Manager account deactivate by id
+    //
+    public function deleteUserAccount($id)
+    {
+      DB::table('users')->where('id', $id)->delete();
+      return redirect()->back()->with('status', 'Account deleted!!.');
+    }
 
 
 
@@ -117,7 +147,7 @@ class AdminController extends Controller
     public function proposalsAll()
     {
 //        status 1 : approved
-        $proposals = DB::table('proposals')->orderBy('id', 'DESC')->get();
+        $proposals = DB::table('proposals')->where('status', 1)->orderBy('id', 'DESC')->get();
         return view('admin.proposalsAll', ['proposals'=>$proposals]);
     }
 
@@ -165,9 +195,30 @@ class AdminController extends Controller
     public function proposalUnpublishedList()
     {
         $proposals = DB::table('proposals')
+            ->join('managers', 'proposals.approved_by', '=', 'managers.id')
             ->where('proposals.status', 2)
+            ->select('proposals.*', 'managers.name')
             ->get();
+
         return view('admin.unpublishedProposals', ['proposals'=>$proposals]);
+    }
+
+    public function proposalPublish($pid)
+    {
+       DB::table('proposals')
+            ->where('id', $pid)
+            ->update([ 'status' => 1]);
+
+       return redirect()->back()->with('status', 'Proposal published.');
+    }
+
+    public function proposalUnpublish($pid)
+    {
+       DB::table('proposals')
+            ->where('id', $pid)
+            ->update([ 'status' => 2]);
+
+       return redirect()->back()->with('status', 'Proposal unpublished.');
     }
 
 

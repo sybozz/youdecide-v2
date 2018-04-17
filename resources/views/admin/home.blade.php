@@ -53,9 +53,9 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>{{ $votes }}</h3>
+          <h3>Generate result</h3>
 
-          <p>Unique Votes</p>
+          <p>{{ $votes }} total votes count.</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
